@@ -1,0 +1,64 @@
+﻿@model Chen_Xuxian_HW6.Models.Order
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h2>Edit</h2>
+
+<h4>Order</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="OrderID" />
+            <div class="form-group">
+                <label asp-for="Notes" class="control-label"></label>
+                <input asp-for="Notes" class="form-control" />
+                <span asp-validation-for="Notes" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-default" />
+            </div>
+        </form>
+    </div>
+</div>
+<div>
+    <h4>Product Information</h4>
+    <table class="table table-sm table-hover table-striped">
+        <thead>
+            <tr>
+                <th>Product Name</th>
+                <th>Product Price</th>
+                <th>Product Quantity</th>
+                <th>Extended Price</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (OrderDetail od in Model.OrderDetails)
+            {
+                <tr>
+                    <td>@Html.DisplayFor(modelItem => od.Product.ProductName)</td>
+                    <td>@Html.DisplayFor(modelItem => od.Product.Price)</td>
+                    <td>@Html.DisplayFor(modelItem => od.Quantity)</td>
+                    <td>@Html.DisplayFor(modelItem => od.ExtendedPrice)</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+<div>
+    <a asp-action="AddToOrder" asp-route-id="@Model.OrderID">Add Another Item</a>
+</div>
+<div>
+    <a asp-action="RemoveFromOrder">Edit Existing Items</a>
+</div>
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
