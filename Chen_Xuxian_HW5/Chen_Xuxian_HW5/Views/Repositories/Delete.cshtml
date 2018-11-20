@@ -1,0 +1,63 @@
+﻿@model Chen_Xuxian_HW5.Models.Repository
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>Repository</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.UserName)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.UserName)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.RepositoryName)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.RepositoryName)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Description)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Description)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Tags)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Tags)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.URL)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.URL)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.LastUpdate)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.LastUpdate)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.StarCount)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.StarCount)
+        </dd>
+    </dl>
+    
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="RepositoryID" />
+        <input type="submit" value="Delete" class="btn btn-default" /> |
+        <a asp-action="Index">Back to List</a>
+    </form>
+</div>

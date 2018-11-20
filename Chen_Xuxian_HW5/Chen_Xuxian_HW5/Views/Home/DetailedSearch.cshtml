@@ -1,0 +1,39 @@
+﻿@using Chen_Xuxian_HW5.Controllers
+
+@{
+    ViewData["Title"] = "DetailedSearch";
+}
+
+<h2>Search for Repositories</h2>
+<form asp-action="DisplaySearchResults" asp-controller="Home" method="get">
+    //Search for both repository and user name.
+    <div class="form-group">
+        <label>Search Repo Name:</label>
+        <input name="strSearchName" class="form-control" />
+    </div>
+
+    <div class="form-group">
+        <label>Search Description:</label>
+        <input name="strSearchDescription" class="form-control" />
+    </div>
+
+    <div class="form-group">
+        <label>Select a Language:</label>
+        @Html.DropDownList("SelectedLanguage", (SelectList)ViewBag.AllLanguages, new { @class = "form-control" })
+    </div>
+
+    <div class="form-group">
+        <label>Number of Stars:</label>
+        @Html.TextBox("strNumberOfStars", null, new { @class = "form-control" }) <div class="text-danger">@ViewBag.Message</div>
+        <label class="radio">@Html.RadioButton("GreatOrLess", GreaterOrLesser.All, true)All</label>
+        <label class="radio">@Html.RadioButton("GreatOrLess", GreaterOrLesser.Greater)Greater Than</label>
+        <label class="radio">@Html.RadioButton("GreatOrLess", GreaterOrLesser.Less)Less Than</label>
+    </div>
+
+    <div class="form-group">
+        <label>Modified After:</label>
+        <input type="date" name="datLastModified" class="form-control" />
+    </div>
+
+    <button type="submit" class="btn btn-danger">Search</button>
+</form>
